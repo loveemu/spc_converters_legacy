@@ -1319,7 +1319,7 @@ static void rareSpcEventSetTempo (RareSpcSeqStat *seq, SeqEventReport *ev)
     arg1 = seq->aRAM[*p];
     (*p)++;
 
-    sprintf(ev->note, "Set Tempo, scale = %d / 256", ev->code, arg1);
+    sprintf(ev->note, "Set Tempo, scale = %d / 256", arg1);
     strcat(ev->classStr, " ev-settempo");
     if (!rareSpcLessTextInSMF)
         smfInsertMetaText(seq->smf, ev->tick, ev->track, SMF_META_TEXT, ev->note);
@@ -1339,7 +1339,7 @@ static void rareSpcEventAddTempo (RareSpcSeqStat *seq, SeqEventReport *ev)
     arg1 = utos1(seq->aRAM[*p]);
     (*p)++;
 
-    sprintf(ev->note, "Add Tempo, scale = %d / 256", ev->code, arg1);
+    sprintf(ev->note, "Add Tempo, scale = %d / 256", arg1);
     strcat(ev->classStr, " ev-addtempo");
     if (!rareSpcLessTextInSMF)
         smfInsertMetaText(seq->smf, ev->tick, ev->track, SMF_META_TEXT, ev->note);
