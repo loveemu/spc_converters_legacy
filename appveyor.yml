@@ -1,0 +1,57 @@
+version: 1.0.{build}
+
+image: Visual Studio 2017
+
+environment:
+  matrix:
+  - generator: "Visual Studio 15"
+    config: Release
+    arch: vs2017-x86
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+  - generator: "Visual Studio 15 Win64"
+    config: Release
+    arch: vs2017-x64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+  - generator: "Visual Studio 14"
+    config: Release
+    arch: vs2015-x86
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+  - generator: "Visual Studio 14 Win64"
+    config: Release
+    arch: vs2015-x64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+init:
+  - git config --global core.autocrlf input
+
+build_script:
+  - cmake -G"%generator%" -H. -Bbuild
+  #- cmake --build build --config "%config%"
+  - msbuild build\spcconv.sln /t:build /p:Configuration="%config%" /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
+after_build:
+  - ps: $env:gitrev = git describe --tags
+  - ps: $env:my_version = "$env:gitrev"
+  - set package_name=spc_converters_legacy-%my_version%-%arch%
+  - copy "build\%config%\akaospc.exe" .
+  - copy "build\%config%\capspc.exe" .
+  - copy "build\%config%\chunspc.exe" .
+  - copy "build\%config%\compspc.exe" .
+  - copy "build\%config%\hbdqspc.exe" .
+  - copy "build\%config%\hudspc.exe" .
+  - copy "build\%config%\konspc.exe" .
+  - copy "build\%config%\mintspc.exe" .
+  - copy "build\%config%\nintspc.exe" .
+  - copy "build\%config%\pboxspc.exe" .
+  - copy "build\%config%\rarespc.exe" .
+  - copy "build\%config%\softcspc.exe" .
+  - copy "build\%config%\suzuhspc.exe" .
+  - copy "build\%config%\wgpspc.exe" .
+  - 7z a %package_name%.zip akaospc.exe capspc.exe chunspc.exe compspc.exe hbdqspc.exe hudspc.exe konspc.exe mintspc.exe nintspc.exe pboxspc.exe rarespc.exe softcspc.exe suzuhspc.exe wgpspc.exe README.md LICENSE
+
+artifacts:
+  - path: $(package_name).zip
+    name: $(arch)
