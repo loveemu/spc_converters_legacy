@@ -3,8 +3,6 @@
  * http://loveemu.yh.land.to/
  */
 
-#define _USE_MATH_DEFINES
-
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>

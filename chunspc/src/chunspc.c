@@ -9,6 +9,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <math.h>
+#include <limits.h>
 #include <assert.h>
 
 #include "spcseq.h"

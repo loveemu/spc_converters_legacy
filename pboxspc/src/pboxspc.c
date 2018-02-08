@@ -18,11 +18,6 @@
 #define APPSHORTNAME "pboxspc"
 #define VERSION "[2014-02-15]"
 
-// from VS2008 math.h
-#define M_PI       3.14159265358979323846
-#define M_PI_2     1.57079632679489661923
-#define M_PI_4     0.785398163397448309616
-
 static int pboxSpcLoopMax = 2;            // maximum loop count of parser
 static int pboxSpcTextLoopMax = 1;        // maximum loop count of text output
 static double pboxSpcTimeLimit = 1200;    // time limit of conversion (for safety)

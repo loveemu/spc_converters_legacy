@@ -4,6 +4,15 @@ project(spcconv C CXX)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(CheckFunctionExists)
+
+add_definitions(-D_USE_MATH_DEFINES)
+CHECK_FUNCTION_EXISTS(sqrt HAVE_BUILTIN_SQRT)
+if(NOT HAVE_BUILTIN_SQRT)
+  list(APPEND CMAKE_REQUIRED_LIBRARIES m)
+  CHECK_FUNCTION_EXISTS(sqrt REQUIRE_MATH)
+endif()
+
 if(MSVC)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
@@ -48,6 +57,10 @@ set(AKAOSPC_HDRS
 
 add_executable(akaospc ${AKAOSPC_SRCS} ${AKAOSPC_HDRS})
 
+if(REQUIRE_MATH)
+  target_link_libraries(akaospc m)
+endif()
+
 #============================================================================
 # capspc
 #============================================================================
@@ -69,6 +82,10 @@ set(CAPSPC_HDRS
 )
 
 add_executable(capspc ${CAPSPC_SRCS} ${CAPSPC_HDRS})
+
+if(REQUIRE_MATH)
+  target_link_libraries(capspc m)
+endif()
 
 #============================================================================
 # chunspc
@@ -92,6 +109,10 @@ set(CHUNSPC_HDRS
 
 add_executable(chunspc ${CHUNSPC_SRCS} ${CHUNSPC_HDRS})
 
+if(REQUIRE_MATH)
+  target_link_libraries(chunspc m)
+endif()
+
 #============================================================================
 # compspc
 #============================================================================
@@ -113,6 +134,10 @@ set(COMPSPC_HDRS
 )
 
 add_executable(compspc ${COMPSPC_SRCS} ${COMPSPC_HDRS})
+
+if(REQUIRE_MATH)
+  target_link_libraries(compspc m)
+endif()
 
 #============================================================================
 # hbdqspc
@@ -136,6 +161,10 @@ set(HBDQSPC_HDRS
 
 add_executable(hbdqspc ${HBDQSPC_SRCS} ${HBDQSPC_HDRS})
 
+if(REQUIRE_MATH)
+  target_link_libraries(hbdqspc m)
+endif()
+
 #============================================================================
 # hudspc
 #============================================================================
@@ -157,6 +186,10 @@ set(HUDSPC_HDRS
 )
 
 add_executable(hudspc ${HUDSPC_SRCS} ${HUDSPC_HDRS})
+
+if(REQUIRE_MATH)
+  target_link_libraries(hudspc m)
+endif()
 
 #============================================================================
 # konspc
@@ -180,6 +213,10 @@ set(KONSPC_HDRS
 
 add_executable(konspc ${KONSPC_SRCS} ${KONSPC_HDRS})
 
+if(REQUIRE_MATH)
+  target_link_libraries(konspc m)
+endif()
+
 #============================================================================
 # mintspc
 #============================================================================
@@ -201,6 +238,10 @@ set(MINTSPC_HDRS
 )
 
 add_executable(mintspc ${MINTSPC_SRCS} ${MINTSPC_HDRS})
+
+if(REQUIRE_MATH)
+  target_link_libraries(mintspc m)
+endif()
 
 #============================================================================
 # nintspc
@@ -224,6 +265,10 @@ set(NINTSPC_HDRS
 
 add_executable(nintspc ${NINTSPC_SRCS} ${NINTSPC_HDRS})
 
+if(REQUIRE_MATH)
+  target_link_libraries(nintspc m)
+endif()
+
 #============================================================================
 # pboxspc
 #============================================================================
@@ -245,6 +290,10 @@ set(PBOXSPC_HDRS
 )
 
 add_executable(pboxspc ${PBOXSPC_SRCS} ${PBOXSPC_HDRS})
+
+if(REQUIRE_MATH)
+  target_link_libraries(pboxspc m)
+endif()
 
 #============================================================================
 # rarespc
@@ -268,6 +317,10 @@ set(RARESPC_HDRS
 
 add_executable(rarespc ${RARESPC_SRCS} ${RARESPC_HDRS})
 
+if(REQUIRE_MATH)
+  target_link_libraries(rarespc m)
+endif()
+
 #============================================================================
 # softcspc
 #============================================================================
@@ -289,6 +342,10 @@ set(SOFTCSPC_HDRS
 )
 
 add_executable(softcspc ${SOFTCSPC_SRCS} ${SOFTCSPC_HDRS})
+
+if(REQUIRE_MATH)
+  target_link_libraries(softcspc m)
+endif()
 
 #============================================================================
 # suzuhspc
@@ -312,6 +369,10 @@ set(SUZUHSPC_HDRS
 
 add_executable(suzuhspc ${SUZUHSPC_SRCS} ${SUZUHSPC_HDRS})
 
+if(REQUIRE_MATH)
+  target_link_libraries(suzuhspc m)
+endif()
+
 #============================================================================
 # wgpspc
 #============================================================================
@@ -333,3 +394,7 @@ set(WGPSPC_HDRS
 )
 
 add_executable(wgpspc ${WGPSPC_SRCS} ${WGPSPC_HDRS})
+
+if(REQUIRE_MATH)
+  target_link_libraries(wgpspc m)
+endif()

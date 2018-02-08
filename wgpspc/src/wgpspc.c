@@ -20,11 +20,6 @@
 #define AUTHOR          "loveemu"
 #define WEBSITE         "http://loveemu.yh.land.to/"
 
-// from VS2008 math.h
-#define M_PI       3.14159265358979323846
-#define M_PI_2     1.57079632679489661923
-#define M_PI_4     0.785398163397448309616
-
 static int wgpSpcLoopMax = 2;            // maximum loop count of parser
 static int wgpSpcTextLoopMax = 1;        // maximum loop count of text output
 static double wgpSpcTimeLimit = 2400;    // time limit of conversion (for safety)

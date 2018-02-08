@@ -50,7 +50,7 @@ after_build:
   - copy "build\%config%\softcspc.exe" .
   - copy "build\%config%\suzuhspc.exe" .
   - copy "build\%config%\wgpspc.exe" .
-  - 7z a %package_name%.zip akaospc.exe capspc.exe chunspc.exe compspc.exe hbdqspc.exe hudspc.exe konspc.exe mintspc.exe nintspc.exe pboxspc.exe rarespc.exe softcspc.exe suzuhspc.exe wgpspc.exe README.md LICENSE
+  - 7z a %package_name%.zip akaospc.exe capspc.exe chunspc.exe compspc.exe hbdqspc.exe hudspc.exe konspc.exe mintspc.exe nintspc.exe pboxspc.exe rarespc.exe softcspc.exe suzuhspc.exe wgpspc.exe README.md LICENSE.txt
 
 artifacts:
   - path: $(package_name).zip

@@ -387,7 +387,7 @@ static int hudsonSpcCheckVer (HudsonSpcSeqStat *seq)
 {
     const byte *aRAM = seq->aRAM;
     int version = SPC_VER_UNKNOWN;
-    int versionStringHeaderLen = strlen(HUDSPC_VERSION_STRING_HEADER_L);
+    int versionStringHeaderLen = (int)strlen(HUDSPC_VERSION_STRING_HEADER_L);
     int v1xxSetSongTableAddr = -1;
 
     seq->timebase = hudsonSpcTimeBase;
@@ -404,7 +404,7 @@ static int hudsonSpcCheckVer (HudsonSpcSeqStat *seq)
     if (seq->ver.versionStringAddr == -1)
     {
         seq->ver.versionStringAddr = indexOfHexPat(aRAM, HUDSPC_VERSION_STRING_HEADER_S, SPC_ARAM_SIZE, NULL);
-        versionStringHeaderLen = strlen(HUDSPC_VERSION_STRING_HEADER_S);
+        versionStringHeaderLen = (int)strlen(HUDSPC_VERSION_STRING_HEADER_S);
     }
     // grab version string from RAM
     if (seq->ver.versionStringAddr != -1)
