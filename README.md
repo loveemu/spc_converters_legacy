@@ -1,6 +1,6 @@
 SNES MIDI Converters
 ====================
-[![Travis Build Status](https://travis-ci.org/loveemu/spc_converters_legacy.svg?branch=master)](https://travis-ci.org/loveemu/spc_converters_legacy) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/tu8kkqss0eevukqq/branch/master?svg=true)](https://ci.appveyor.com/project/loveemu/spc_converters_legacy/branch/master)
+[![Travis Build Status](https://travis-ci.com/loveemu/spc_converters_legacy.svg?branch=master)](https://travis-ci.com/loveemu/spc_converters_legacy) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/tu8kkqss0eevukqq/branch/master?svg=true)](https://ci.appveyor.com/project/loveemu/spc_converters_legacy/branch/master)
 
 These MIDI converters are somewhat old and do not have 100% accuracy.
 The source code is extremely messy and it is hard to read!
